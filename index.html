@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs Hangman</title> <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Irregular Verbs Hangman</h1>
+        
+        <div class="forca-container">
+            <img id="imagem-forca" src="img/forca0.png" alt="Hangman Image">
+        </div>
+
+        <div class="jogo-container">
+            <p id="hint-display" class="hint-display">Infinitive: <span></span></p>
+
+            <div id="palavra-display" class="word-display">
+                </div>
+
+            <p id="letras-erradas-info">Incorrect guesses: <span id="letras-erradas"></span></p>
+
+            <div class="input-container">
+                <input type="text" id="input-letra" maxlength="1" placeholder="Type a letter" autofocus>
+                <button id="btn-chutar">Guess</button>
+            </div>
+            
+            <p id="mensagem" class="message"></p>
+        </div>
+        
+        <button id="btn-reiniciar" class="restart-button">New Verb</button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

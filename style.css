@@ -1,0 +1,275 @@
+/* Importação de fonte: Poppins para um visual moderno */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root {
+    /* Paleta de Cores Moderna */
+    --primary-color: #3498db; /* Azul Principal (Ação) */
+    --secondary-color: #2ecc71; /* Verde Sucesso/Reinício */
+    --danger-color: #e74c3c; /* Vermelho Erro */
+    
+    /* Cores de Texto e Fundo */
+    --text-dark: #2c3e50; /* Texto principal escuro */
+    --text-light: #7f8c8d; /* Texto secundário/dica */
+    --background-app: #f4f6f9; /* Fundo suave, quase branco */
+    --container-bg: #ffffff; /* Fundo do container branco puro */
+    
+    /* Sombras */
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lift: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Base Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-app);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Container Principal do Jogo */
+.container {
+    background-color: var(--container-bg);
+    padding: 30px 40px;
+    border-radius: 18px; /* Borda mais arredondada */
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    width: 95%;
+    max-width: 550px;
+    
+    /* Configuração Flex para telas menores */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    max-height: 98vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+/* Título */
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8em;
+    letter-spacing: -0.5px;
+}
+
+/* --- Container da Forca (Imagem) --- */
+.forca-container {
+    height: 180px; /* Um pouco mais compacta */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+#imagem-forca {
+    width: 130px; /* Tamanho ajustado */
+    height: auto;
+    max-height: 100%;
+    /* Sombra mais suave para um visual 3D leve */
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.15));
+}
+
+/* --- Elementos do Jogo --- */
+.hint-display {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.hint-display span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.word-display {
+    font-family: 'Poppins', monospace; /* Mantendo o Poppins, mas com espaçamento */
+    font-size: 2.5em; /* Maior destaque */
+    letter-spacing: 15px;
+    margin: 20px 0;
+    color: var(--text-dark);
+    font-weight: 800;
+    user-select: none; /* Não permitir seleção */
+}
+
+#letras-erradas-info {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+#letras-erradas {
+    color: var(--danger-color);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Input e Botão de Chute */
+.input-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#input-letra {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 80px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px; /* Mais arredondado */
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+#input-letra:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); /* Anel de foco mais suave */
+    outline: none;
+}
+
+/* Estilo para todos os botões (base) */
+button {
+    padding: 12px 28px;
+    font-size: 1.05em;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botão de Chute (Principal Ação) */
+#btn-chutar {
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+}
+
+#btn-chutar:hover:not(:disabled) {
+    background-color: #2980b9;
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.5);
+    transform: translateY(-2px);
+}
+
+#btn-chutar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.4);
+}
+
+#btn-chutar:disabled {
+    background-color: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Mensagens de Status (Feedback) */
+.message {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 15px;
+    min-height: 25px;
+    transition: color 0.3s ease;
+}
+
+.message.vitoria {
+    color: var(--secondary-color);
+    /* Efeito de brilho sutil */
+    text-shadow: 0 0 8px rgba(46, 204, 113, 0.5); 
+}
+
+.message.derrota {
+    color: var(--danger-color);
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+}
+
+.message.alerta {
+    color: var(--text-light);
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+/* Botão Reiniciar (Nova Partida) */
+.restart-button {
+    background-color: var(--secondary-color);
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+
+.restart-button:hover {
+    background-color: #27ae60;
+    box-shadow: 0 6px 15px rgba(46, 204, 113, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Responsividade para Dispositivos Móveis */
+@media (max-width: 450px) {
+    .container {
+        padding: 20px 25px;
+        border-radius: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .word-display {
+        font-size: 2em;
+        letter-spacing: 10px;
+        margin: 15px 0;
+    }
+    
+    .forca-container {
+        height: 150px;
+        margin-bottom: 15px;
+    }
+    
+    #imagem-forca {
+        width: 110px;
+    }
+    
+    /* Ajuste para o botão e input em telas muito pequenas */
+    .input-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #input-letra {
+        width: 100%;
+        max-width: 150px;
+    }
+    
+    #btn-chutar {
+        width: 100%;
+        max-width: 150px;
+    }
+    
+    .restart-button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    
+    .message {
+        font-size: 1.05em;
+    }
+}
